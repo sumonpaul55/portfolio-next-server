@@ -6,18 +6,20 @@ import router from "./routes";
 import globalErrorHandler from "./app/middleware/globalErrorhandler";
 import notFound from "./app/middleware/notFound";
 // middleware
-app.use(express.json());
 app.use(cors({ origin: ["http://localhost:3000"] }));
 app.use(cookieParser());
-
-app.use(cookieParser());
+app.use(express.json());
+// url encoded
+// app.use(express.urlencoded());
 
 // application routes
-app.use(globalErrorHandler);
-app.use(notFound);
 app.use("/api", router);
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.use(globalErrorHandler);
+// not found route
+app.use(notFound);
 export default app;

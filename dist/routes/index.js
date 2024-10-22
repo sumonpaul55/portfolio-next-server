@@ -5,7 +5,7 @@ const user_route_1 = require("../app/modules/user/user.route");
 const router = (0, express_1.Router)();
 const moduleRoute = [
     {
-        path: "user",
+        path: "/user",
         route: user_route_1.userRoute,
     },
 ];

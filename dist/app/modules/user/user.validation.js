@@ -9,7 +9,7 @@ const userValidationSchema = zod_1.z.object({
     address: zod_1.z.string().optional(),
     role: zod_1.z.string({ required_error: "role is required" }),
     password: zod_1.z.string(),
-    profilePhoto: zod_1.z.string({ required_error: "Profile image is required" }),
+    profilePhoto: zod_1.z.string({ required_error: "Profile image is required" }).optional(),
 });
 const updateUserValidationSchema = zod_1.z.object({
     body: zod_1.z.object({
