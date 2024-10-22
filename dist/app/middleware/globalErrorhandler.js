@@ -22,35 +22,35 @@ const globalErrorHandler = (err, req, res, next) => {
     ];
     if (err instanceof zod_1.ZodError) {
         const simplifiedError = (0, handleZodError_1.default)(err);
-        statusCode = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode;
-        message = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message;
-        errorSources = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources;
+        statusCode = simplifiedError?.statusCode;
+        message = simplifiedError?.message;
+        errorSources = simplifiedError?.errorSources;
     }
-    else if ((err === null || err === void 0 ? void 0 : err.name) === "ValidationError") {
+    else if (err?.name === "ValidationError") {
         const simplifiedError = (0, handleValidationError_1.default)(err);
-        statusCode = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode;
-        message = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message;
-        errorSources = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources;
+        statusCode = simplifiedError?.statusCode;
+        message = simplifiedError?.message;
+        errorSources = simplifiedError?.errorSources;
     }
-    else if ((err === null || err === void 0 ? void 0 : err.name) === "CastError") {
+    else if (err?.name === "CastError") {
         const simplifiedError = (0, handleCastError_1.default)(err);
-        statusCode = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode;
-        message = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message;
-        errorSources = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources;
+        statusCode = simplifiedError?.statusCode;
+        message = simplifiedError?.message;
+        errorSources = simplifiedError?.errorSources;
     }
-    else if ((err === null || err === void 0 ? void 0 : err.code) === 11000) {
+    else if (err?.code === 11000) {
         const simplifiedError = (0, handleDuplicateError_1.default)(err);
-        statusCode = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode;
-        message = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message;
-        errorSources = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources;
+        statusCode = simplifiedError?.statusCode;
+        message = simplifiedError?.message;
+        errorSources = simplifiedError?.errorSources;
     }
     else if (err instanceof AppError_1.default) {
-        statusCode = err === null || err === void 0 ? void 0 : err.statusCode;
+        statusCode = err?.statusCode;
         message = err.message;
         errorSources = [
             {
                 path: "",
-                message: err === null || err === void 0 ? void 0 : err.message,
+                message: err?.message,
             },
         ];
     }
@@ -59,7 +59,7 @@ const globalErrorHandler = (err, req, res, next) => {
         errorSources = [
             {
                 path: "",
-                message: err === null || err === void 0 ? void 0 : err.message,
+                message: err?.message,
             },
         ];
     }
@@ -69,7 +69,7 @@ const globalErrorHandler = (err, req, res, next) => {
         message,
         errorSources,
         err,
-        stack: config_1.config.NODE_ENV === "development" ? err === null || err === void 0 ? void 0 : err.stack : null,
+        stack: config_1.config.NODE_ENV === "development" ? err?.stack : null,
     });
 };
 exports.default = globalErrorHandler;

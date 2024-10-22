@@ -6,8 +6,7 @@ class QueryBuilder {
         this.query = query;
     }
     search(searchableFields) {
-        var _a;
-        const searchTerm = (_a = this === null || this === void 0 ? void 0 : this.query) === null || _a === void 0 ? void 0 : _a.searchTerm;
+        const searchTerm = this?.query?.searchTerm;
         if (searchTerm) {
             this.modelQuery = this.modelQuery.find({
                 $or: searchableFields.map((field) => ({
@@ -18,7 +17,7 @@ class QueryBuilder {
         return this;
     }
     filter() {
-        const queryObj = Object.assign({}, this.query);
+        const queryObj = { ...this.query };
         //filter
         const excludeFields = ["searchTerm", "sort", "limit", "page", "fields"];
         excludeFields.forEach((el) => delete queryObj[el]);
@@ -26,23 +25,20 @@ class QueryBuilder {
         return this;
     }
     sort() {
-        var _a, _b, _c, _d;
-        const sort = ((_c = (_b = (_a = this === null || this === void 0 ? void 0 : this.query) === null || _a === void 0 ? void 0 : _a.sort) === null || _b === void 0 ? void 0 : _b.split(",")) === null || _c === void 0 ? void 0 : _c.join(" ")) || "-createdAt";
-        this.modelQuery = (_d = this.modelQuery) === null || _d === void 0 ? void 0 : _d.sort(sort);
+        const sort = this?.query?.sort?.split(",")?.join(" ") || "-createdAt";
+        this.modelQuery = this.modelQuery?.sort(sort);
         return this;
     }
     // paginate
     paginate() {
-        var _a, _b;
-        const page = Number((_a = this === null || this === void 0 ? void 0 : this.query) === null || _a === void 0 ? void 0 : _a.page) || 1;
-        const limit = Number((_b = this === null || this === void 0 ? void 0 : this.query) === null || _b === void 0 ? void 0 : _b.limit) || 1;
+        const page = Number(this?.query?.page) || 1;
+        const limit = Number(this?.query?.limit) || 1;
         const skip = (page - 1) * limit;
         this.modelQuery = this.modelQuery.skip(skip).limit(limit);
         return this;
     }
     fields() {
-        var _a, _b, _c;
-        const fields = ((_c = (_b = (_a = this === null || this === void 0 ? void 0 : this.query) === null || _a === void 0 ? void 0 : _a.fields) === null || _b === void 0 ? void 0 : _b.split(",")) === null || _c === void 0 ? void 0 : _c.join(" ")) || "-__v";
+        const fields = this?.query?.fields?.split(",")?.join(" ") || "-__v";
         this.modelQuery = this.modelQuery.select(fields);
         return this;
     }

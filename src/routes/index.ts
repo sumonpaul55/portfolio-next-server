@@ -9,7 +9,7 @@ const router = Router();
 
 const moduleRoute: TmoudulRoute[] = [
   {
-    path: "user",
+    path: "/user",
     route: userRoute,
   },
 ];

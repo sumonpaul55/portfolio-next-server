@@ -7,7 +7,7 @@ const userValidationSchema = z.object({
   address: z.string().optional(),
   role: z.string({ required_error: "role is required" }),
   password: z.string(),
-  profilePhoto: z.string({ required_error: "Profile image is required" }),
+  profilePhoto: z.string({ required_error: "Profile image is required" }).optional(),
 });
 const updateUserValidationSchema = z.object({
   body: z.object({
