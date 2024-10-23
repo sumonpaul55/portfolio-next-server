@@ -1,12 +1,14 @@
 import express from "express";
-const app = express();
+
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import router from "./routes";
 import globalErrorHandler from "./app/middleware/globalErrorhandler";
 import notFound from "./app/middleware/notFound";
+const app = express();
 // middleware
-app.use(cors({ origin: ["http://localhost:3000"] }));
+
+app.use(cors({ origin: ["http://localhost:3000"], credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 // url encoded
@@ -22,4 +24,5 @@ app.get("/", (req, res) => {
 app.use(globalErrorHandler);
 // not found route
 app.use(notFound);
+
 export default app;

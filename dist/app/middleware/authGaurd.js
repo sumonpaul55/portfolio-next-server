@@ -17,7 +17,7 @@ const authGaurd = (...requiredRoles) => {
             throw new AppError_1.default(http_status_codes_1.StatusCodes.UNAUTHORIZED, "You are not authorized");
         }
         // checking if the given token is valid
-        const decoded = jsonwebtoken_1.default.verify(token, config_1.config.JWT_ACCESSTOKEN);
+        const decoded = jsonwebtoken_1.default.verify(token, config_1.config.JWT_ACCESS_TOKEN_SECRET);
         const { email, role } = decoded;
         // check if the user is exist
         const user = await user_mode_1.User.isUserExistByEmail(email);
