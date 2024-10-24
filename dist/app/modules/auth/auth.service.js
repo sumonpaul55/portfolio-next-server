@@ -25,9 +25,33 @@ const registerUser = async (payload) => {
         profilePhoto: newUser?.profilePhoto,
     };
     const accessToken = (0, JWTVerify_1.createToken)(JwtPayload, config_1.config.JWT_ACCESS_TOKEN_SECRET, config_1.config.JWT_ACCESS_EXPIRES_IN);
-    const refreshToken = (0, JWTVerify_1.createToken)(JwtPayload, config_1.config.JWT_REFRESH_SECRET, config_1.config.JWT_REFRESH_EXPIRES_IN);
-    return { accessToken, refreshToken };
+    // const refreshToken = createToken(JwtPayload, config.JWT_REFRESH_SECRET as string, config.JWT_REFRESH_EXPIRES_IN as string);
+    return { accessToken };
+};
+const loginUserDB = async (payload) => {
+    const isExistUser = await user_mode_1.User.isUserExistByEmail(payload.email);
+    if (!isExistUser) {
+        throw new AppError_1.default(http_status_codes_1.StatusCodes.BAD_REQUEST, "User not found");
+    }
+    // ispassword mathched
+    const passwordMatched = await user_mode_1.User.isPasswordMatched(payload.password, isExistUser?.password);
+    if (!passwordMatched) {
+        throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, "Password does not matched");
+    }
+    // create token after register
+    const JwtPayload = {
+        _id: isExistUser?._id,
+        name: isExistUser.name,
+        email: isExistUser.email,
+        phone: isExistUser.phone,
+        role: isExistUser.role,
+        profilePhoto: isExistUser?.profilePhoto,
+    };
+    const accessToken = (0, JWTVerify_1.createToken)(JwtPayload, config_1.config.JWT_ACCESS_TOKEN_SECRET, config_1.config.JWT_ACCESS_EXPIRES_IN);
+    // const refreshToken = createToken(JwtPayload, config.JWT_REFRESH_SECRET as string, config.JWT_REFRESH_EXPIRES_IN as string);
+    return { accessToken };
 };
 exports.authService = {
     registerUser,
+    loginUserDB,
 };

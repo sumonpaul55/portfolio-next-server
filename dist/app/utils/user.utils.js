@@ -8,6 +8,6 @@ const validateEmail = function (email) {
 };
 exports.validateEmail = validateEmail;
 exports.USER_ROLE = {
-    user: "USER",
-    admin: "ADMIN",
+    USER: "USER",
+    ADMIN: "ADMIN",
 };

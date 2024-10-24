@@ -12,8 +12,5 @@ const multer_config_1 = require("../../config/multer.config");
 const bodyParser_1 = require("../../middleware/bodyParser");
 const router = (0, express_1.Router)();
 router.post("/register", multer_config_1.multerUpload.single("image"), bodyParser_1.parseBody, (0, validateRequest_1.default)(auth_validation_1.authValidation.userValidationSchema), auth_controller_1.authController.registerUser);
+router.post("/login", (0, validateRequest_1.default)(auth_validation_1.authValidation.loginValidation), auth_controller_1.authController.loginUser);
 exports.authRoutes = router;
-// (req, res, next) => {
-//     req.body = JSON.parse(req.body.data);
-//     next();
-//   },

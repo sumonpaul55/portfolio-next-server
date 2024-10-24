@@ -8,7 +8,7 @@ const userValidationSchema = zod_1.z.object({
         email: zod_1.z.string({ required_error: "User email is required" }).email({ message: "Provide a valid email" }),
         phone: zod_1.z.string({ required_error: "Phone is required" }),
         address: zod_1.z.string().optional(),
-        role: zod_1.z.string({ required_error: "role is required" }),
+        role: zod_1.z.string({ required_error: "role is required" }).optional(),
         password: zod_1.z.string(),
         profilePhoto: zod_1.z.string({ required_error: "Profile image is required" }).optional(),
     }),
@@ -23,7 +23,14 @@ const updateUserValidationSchema = zod_1.z.object({
         profilePhoto: zod_1.z.string({ required_error: "Profile image is required" }).optional(),
     }),
 });
+const loginValidation = zod_1.z.object({
+    body: zod_1.z.object({
+        email: zod_1.z.string({ required_error: "User email is required" }).email({ message: "Provide a valid email" }),
+        password: zod_1.z.string({ required_error: "Password is required" }),
+    }),
+});
 exports.authValidation = {
     userValidationSchema,
     updateUserValidationSchema,
+    loginValidation,
 };
