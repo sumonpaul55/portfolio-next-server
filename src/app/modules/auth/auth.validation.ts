@@ -22,7 +22,15 @@ const updateUserValidationSchema = z.object({
   }),
 });
 
+const loginValidation = z.object({
+  body: z.object({
+    email: z.string({ required_error: "User email is required" }).email({ message: "Provide a valid email" }),
+    password: z.string({ required_error: "Password is required" }),
+  }),
+});
+
 export const authValidation = {
   userValidationSchema,
   updateUserValidationSchema,
+  loginValidation,
 };

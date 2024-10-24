@@ -8,5 +8,6 @@ import { parseBody } from "../../middleware/bodyParser";
 const router = Router();
 
 router.post("/register", multerUpload.single("image"), parseBody, validateRequest(authValidation.userValidationSchema), authController.registerUser);
+router.post("/login", validateRequest(authValidation.loginValidation), authController.loginUser);
 
 export const authRoutes = router;

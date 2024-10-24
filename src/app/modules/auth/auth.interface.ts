@@ -12,6 +12,7 @@ export type TUser = {
   password: string;
   address?: string | undefined;
   profilePhoto?: string | undefined;
+  _id?: string;
 };
 
 export interface TUserModel extends Model<TUser> {
@@ -19,3 +20,7 @@ export interface TUserModel extends Model<TUser> {
   isPasswordMatched(paylnTExtPassword: string, hashTagPassword: string): Promise<boolean>;
   isJWTIssuedBeforePasswordChanged(passwordChangedTimestamp: Date, jwtIssuedTimestamp: number): boolean;
 }
+export type TloginUser = {
+  email: string;
+  password: string;
+};

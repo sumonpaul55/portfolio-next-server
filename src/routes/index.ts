@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { authRoutes } from "../app/modules/auth/auth.route";
 import { userRoute } from "../app/modules/user/user.route";
+import { postRouter } from "../app/modules/auth/post/post.route";
 
 type TmoudulRoute = {
   path: string;
@@ -16,6 +17,10 @@ const moduleRoute: TmoudulRoute[] = [
   {
     path: "/user",
     route: userRoute,
+  },
+  {
+    path: "/post",
+    route: postRouter,
   },
 ];
 
