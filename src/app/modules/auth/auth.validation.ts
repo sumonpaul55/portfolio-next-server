@@ -6,7 +6,7 @@ const userValidationSchema = z.object({
     email: z.string({ required_error: "User email is required" }).email({ message: "Provide a valid email" }),
     phone: z.string({ required_error: "Phone is required" }),
     address: z.string().optional(),
-    role: z.string({ required_error: "role is required" }),
+    role: z.string({ required_error: "role is required" }).optional(),
     password: z.string(),
     profilePhoto: z.string({ required_error: "Profile image is required" }).optional(),
   }),

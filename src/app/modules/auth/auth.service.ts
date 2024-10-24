@@ -20,8 +20,8 @@ const registerUser = async (payload: TUser) => {
     profilePhoto: newUser?.profilePhoto,
   };
   const accessToken = createToken(JwtPayload, config.JWT_ACCESS_TOKEN_SECRET as string, config.JWT_ACCESS_EXPIRES_IN as string);
-  const refreshToken = createToken(JwtPayload, config.JWT_REFRESH_SECRET as string, config.JWT_REFRESH_EXPIRES_IN as string);
-  return { accessToken, refreshToken };
+  // const refreshToken = createToken(JwtPayload, config.JWT_REFRESH_SECRET as string, config.JWT_REFRESH_EXPIRES_IN as string);
+  return { accessToken };
 };
 
 export const authService = {
