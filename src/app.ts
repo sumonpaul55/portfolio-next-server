@@ -8,7 +8,7 @@ import notFound from "./app/middleware/notFound";
 const app = express();
 // middleware
 
-app.use(cors({ origin: ["http://localhost:3000"], credentials: true }));
+app.use(cors({ origin: ["http://localhost:3000", "https://sumon-paulinfo.vercel.app"], credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 // url encoded
