@@ -10,7 +10,6 @@ const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const http_status_codes_1 = require("http-status-codes");
 const auth_service_1 = require("./auth.service");
 const registerUser = (0, catchAsync_1.default)(async (req, res) => {
-    console.log("controller ", req.body);
     if (!req.file) {
         throw new AppError_1.default(http_status_codes_1.StatusCodes.NOT_FOUND, "Image is missing");
     }

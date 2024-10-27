@@ -4,7 +4,6 @@ import sendResponse from "../../utils/sendResponse";
 import { StatusCodes } from "http-status-codes";
 import { authService } from "./auth.service";
 const registerUser = catchAsync(async (req, res) => {
-  console.log("controller ", req.body);
   if (!req.file) {
     throw new AppError(StatusCodes.NOT_FOUND, "Image is missing");
   }
@@ -17,7 +16,7 @@ const registerUser = catchAsync(async (req, res) => {
   });
 });
 const loginUser = catchAsync(async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const result = await authService.loginUserDB(req.body);
   sendResponse(res, {
     statusCode: StatusCodes.OK,

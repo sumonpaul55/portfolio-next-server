@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const auth_route_1 = require("../app/modules/auth/auth.route");
 const user_route_1 = require("../app/modules/user/user.route");
-const post_route_1 = require("../app/modules/auth/post/post.route");
+const post_route_1 = require("../app/modules/post/post.route");
 const router = (0, express_1.Router)();
 const moduleRoute = [
     {

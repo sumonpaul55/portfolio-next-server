@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
-import catchAsync from "../../../utils/catchAsync";
-import sendResponse from "../../../utils/sendResponse";
 import { postService } from "./post.service";
+import catchAsync from "../../utils/catchAsync";
+import sendResponse from "../../utils/sendResponse";
 
 const createPost = catchAsync(async (req, res) => {
   const result = await postService.createPostDb(req.body);

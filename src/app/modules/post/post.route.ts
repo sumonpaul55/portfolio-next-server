@@ -1,9 +1,9 @@
 import { Router } from "express";
-import authGaurd from "../../../middleware/authGaurd";
-import { USER_ROLE } from "../../../utils/user.utils";
-import validateRequest from "../../../middleware/validateRequest";
 import { postValidation } from "./post.validation";
 import { postController } from "./post.controller";
+import authGaurd from "../../middleware/authGaurd";
+import { USER_ROLE } from "../../utils/user.utils";
+import validateRequest from "../../middleware/validateRequest";
 
 const router = Router();
 
