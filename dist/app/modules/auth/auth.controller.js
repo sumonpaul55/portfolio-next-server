@@ -22,7 +22,7 @@ const registerUser = (0, catchAsync_1.default)(async (req, res) => {
     });
 });
 const loginUser = (0, catchAsync_1.default)(async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const result = await auth_service_1.authService.loginUserDB(req.body);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_codes_1.StatusCodes.OK,
