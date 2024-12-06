@@ -4,7 +4,6 @@ import sendResponse from "../../utils/sendResponse";
 import { contactService } from "./contact.service";
 
 const addContactData = catchAsync(async(req, res)=>{
-    console.log(req.body)
         const result = await contactService.addContactDataDb(req.body)
     sendResponse(res, {
         statusCode: StatusCodes.OK,
@@ -13,6 +12,7 @@ const addContactData = catchAsync(async(req, res)=>{
         data: result
     })
 })
+
 const getMessage = catchAsync(async(req, res)=>{
     const result = await contactService.getContactMessage()
     sendResponse(res, {
@@ -22,6 +22,7 @@ const getMessage = catchAsync(async(req, res)=>{
         data: result
     })
 })
+
 export const contactController = {
     addContactData, getMessage
 }
