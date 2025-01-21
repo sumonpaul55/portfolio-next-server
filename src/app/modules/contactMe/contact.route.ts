@@ -1,6 +1,6 @@
 import { Router } from "express";
 import validateRequest from "../../middleware/validateRequest";
-import {  contactValidation } from "./contact.validation";
+import { contactValidation } from "./contact.validation";
 import { contactController } from "./contact.controller";
 
 const router = Router()

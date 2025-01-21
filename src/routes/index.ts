@@ -34,7 +34,7 @@ const moduleRoute: TmoudulRoute[] = [
     route: projectRouter,
   },
   {
-    path: "/",
+    path: "/contact",
     route: contactRouter,
   },
 ];
