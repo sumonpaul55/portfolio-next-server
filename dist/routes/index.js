@@ -30,7 +30,7 @@ const moduleRoute = [
         route: projects_route_1.projectRouter,
     },
     {
-        path: "/",
+        path: "/contact",
         route: contact_route_1.contactRouter,
     },
 ];

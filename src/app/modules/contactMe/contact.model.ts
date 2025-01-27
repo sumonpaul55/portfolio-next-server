@@ -1,4 +1,4 @@
-import  { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 import { TContactData } from "./contact.interface";
 
 // Define the schema
@@ -19,6 +19,11 @@ const contactSchema = new Schema<TContactData>(
       ], // Regex for email validation
     },
     message: {
+      type: String,
+      required: true,
+      trim: true, // Removes leading and trailing whitespace
+    },
+    phone: {
       type: String,
       required: true,
       trim: true, // Removes leading and trailing whitespace

@@ -9,7 +9,6 @@ const catchAsync_1 = __importDefault(require("../../utils/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const contact_service_1 = require("./contact.service");
 const addContactData = (0, catchAsync_1.default)(async (req, res) => {
-    console.log(req.body);
     const result = await contact_service_1.contactService.addContactDataDb(req.body);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_codes_1.StatusCodes.OK,
