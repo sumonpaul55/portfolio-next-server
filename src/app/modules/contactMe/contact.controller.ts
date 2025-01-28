@@ -14,7 +14,7 @@ const addContactData = catchAsync(async (req, res) => {
 })
 
 const getMessage = catchAsync(async (req, res) => {
-    const result = await contactService.getContactMessage()
+    const result = await contactService.getContactMessage(req.query)
     sendResponse(res, {
         statusCode: StatusCodes.OK,
         success: true,
