@@ -4,7 +4,7 @@ import sendResponse from "../../utils/sendResponse";
 import { contactService } from "./contact.service";
 
 const addContactData = catchAsync(async (req, res) => {
-    const result = await contactService.addContactDataDb(req.body)
+    const result = await contactService.addContactDataDb(req.body);
     sendResponse(res, {
         statusCode: StatusCodes.OK,
         success: true,
